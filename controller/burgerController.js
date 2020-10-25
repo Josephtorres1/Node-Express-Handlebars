@@ -1,6 +1,6 @@
 var burger = require("../models/burgers.js");
-var router = express.Router();
 var express = require("express");
+var router = express.Router();
 
 //express route to render all data
 router.get("/", function (req, res) {
