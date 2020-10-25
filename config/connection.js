@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+const pw = require("../pw");
 var connection;
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -7,7 +8,7 @@ if (process.env.JAWSDB_URL) {
     host: "localhost",
     port: 3306,
     user: "root",
-    password: process.env.DB_PASSWORD,
+    password: pw,
     database: "burger_db",
   });
 }
