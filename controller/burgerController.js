@@ -17,6 +17,17 @@ router.post("/api/burgers", function (req, res) {
     res.json({ id: result.insertId });
   });
 });
+//express route to delete all burgers
+router.delete("/api/burgers/all", function (req, res) {
+  burger.deleteAll(function (result) {
+    if (result.affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
+
 //express route to update burger devour state
 router.put("/api/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
@@ -34,15 +45,6 @@ router.put("/api/burgers/:id", function (req, res) {
     }
   );
 });
-//express route to delete all burgers
-router.delete("/api/burgers/all", function (req, res) {
-  burger.deleteAll(function (result) {
-    if (result.affectedRows == 0) {
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
+
 //exporting router
 module.exports = router;

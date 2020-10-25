@@ -45,6 +45,17 @@ var orm = {
       cb(result);
     });
   },
+  //function to delete burger
+  delete: function (table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+    connection.query(queryString, function (err, result) {
+      if (err) throw err;
+      cb(result);
+    });
+  },
+
   // function to update one burger
   updateOne: function (table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
@@ -57,16 +68,7 @@ var orm = {
       cb(result);
     });
   },
-  //function to delete burger
-  delete: function (table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
-    connection.query(queryString, function (err, result) {
-      if (err) throw err;
-      cb(result);
-    });
-  },
+
   //function to delete all burgers
   deleteAll: function (table, cb) {
     var queryString = "DELETE FROM " + table;
